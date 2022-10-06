@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import kebabCase from "lodash/kebabCase"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -17,7 +17,7 @@ import { Link, graphql } from "gatsby"
 
 const IndexPage = ({
   data: {
-    allGraphCmsArticle: {edges},
+    allGraphCmsArticle: {edges, group},
  
   },
 }) => (
@@ -31,14 +31,49 @@ const homePageBlogRoll = page.node
 <Link to={page.node.slug}>  {homePageBlogRoll.title}</Link>
 <p>{page.node.description}</p>
 
+
  </div>
+ 
+//  {page.tags.map((tag, index) =>{
+
+//   return(
+//     <div className="">
+//       <li index={index}>{tag}</li>
+//     </div>
+//   )
+//   }
+  
+  
+//   )}
  )
+
 
  }
 
 
 )
 }
+
+
+{/* {group.map((tag, index)=> {
+  // const tagsName=tag.edges
+  console.log(tag)
+  // console.log(tagName)
+  return(
+
+<div index={index}  className="">
+<Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+{tag.nodes.map((tagName, index)=>{
+  return(
+    tagName.nodes.tags
+  )
+})}
+</Link>
+</div>
+
+  )
+
+})} */}
 </Layout>
 )
 
@@ -55,12 +90,19 @@ query HomePageQuery {
         }
         description
         date
-
         title
       }
     }
+    group(field: tags) {
+      fieldValue
+      totalCount
+    }
+    nodes {
+      tags
+    }
   }
 }
+
 `
 
 

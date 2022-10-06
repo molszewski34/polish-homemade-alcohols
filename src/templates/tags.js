@@ -19,9 +19,10 @@ const Tags = ({ pageContext, data }) => {
         {edges.map(({ node }) => {
           const { slug } = node
           const { title } = node
+        {  console.log({slug})}
           return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
+            <li key={`slug`}>
+              <Link to={`/${slug}`}>{title}</Link>
             </li>
           )
         })}
@@ -38,37 +39,40 @@ const Tags = ({ pageContext, data }) => {
 export default Tags
 
 export const pageQuery = graphql`
-  query TagPageQuery {
-    allGraphCmsArticle {
-      edges {
-        node {
-          tags
-          title
-          slug
-        }
+query ($tag: String) {
+  allGraphCmsArticle(
+    limit: 2000
+    sort: {fields: date, order: DESC}
+    filter: {tags: {in: [$tag]}}
+  ) {
+    totalCount
+    edges {
+      node {
+        slug
+        title
       }
-      totalCount
     }
   }
-`
-Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allGraphCmsArticle: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            slug: PropTypes.string.isRequired,
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
 }
+`
+// Tags.propTypes = {
+//   pageContext: PropTypes.shape({
+//     tag: PropTypes.string.isRequired,
+//   }),
+//   data: PropTypes.shape({
+//     allGraphCmsArticle: PropTypes.shape({
+//       totalCount: PropTypes.number.isRequired,
+//       edges: PropTypes.arrayOf(
+//         PropTypes.shape({
+//           node: PropTypes.shape({
+//             title: PropTypes.string.isRequired,
+//             slug: PropTypes.string.isRequired,
+//           }),
+//         }).isRequired
+//       ),
+//     }),
+//   }),
+// }
 // export const pageQuery = graphql`
 //   query($tag: String) {
 //     allMarkdownRemark(

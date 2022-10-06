@@ -1,41 +1,26 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`src/templates/articlesTemplate.js`)
   return graphql(
-    // `
-    //   {
-    //     allMarkdownRemark(
-    //       sort: { fields: [frontmatter___date], order: DESC }
-    //       limit: 1000
-    //     ) {
-    //       edges {
-    //         node {
-    //           fields {
-    //             slug
-    //           }
-    //           frontmatter {
-    //             title
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // `
     `
-      {
-        allGraphCmsArticle(sort: { fields: date, order: DESC }, limit: 2) {
-          edges {
-            node {
-              slug
-              title
-            }
+    {
+      allGraphCmsArticle(sort: {fields: date, order: DESC}, limit: 2) {
+        edges {
+          node {
+            slug
+            title
           }
         }
+        group(field: tags) {
+          fieldValue
+        }
       }
+    }
     `
   ).then(result => {
     if (result.errors) {
@@ -60,6 +45,29 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
+    // tags 
+    const tagTemplate = path.resolve("src/templates/tags.js")
+
+    // Create post detail pages
+    posts.forEach(({ node }) => {
+      createPage({
+        path: node.slug,
+        component: blogPost,
+      })
+    })
+    const tags = result.data.allGraphCmsArticle.group
+  
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue,
+        },
+      })
+    })
+
+    //Pagination 
     // Create blog post list pages
     const postsPerPage = 2
     const numPages = Math.ceil(posts.length / postsPerPage)
@@ -77,6 +85,10 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
   })
+
+
+
+
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
