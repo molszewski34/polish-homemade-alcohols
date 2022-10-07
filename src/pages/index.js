@@ -30,7 +30,14 @@ const homePageBlogRoll = page.node
     <span>{page.node.date}</span>
 <Link to={page.node.slug}>  {homePageBlogRoll.title}</Link>
 <p>{page.node.description}</p>
+{page.node.tags.map((tag)=>{
+  return(
 
+    <Link to={`/tags/${tag}`}>{tag}</Link>
+  )
+   
+  }
+)}
 
  </div>
  
