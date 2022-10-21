@@ -2,7 +2,12 @@ import React from "react"
 
 // Components
 import { Link, graphql } from "gatsby"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
+import Layout from "../components/layout"
+import FlexWrapper from "../themes/FlexWrapper"
+import TagsWrapper from "../themes/TagsWrapper"
+//themes
+
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
@@ -13,8 +18,11 @@ const Tags = ({ pageContext, data }) => {
   } tagged with "${tag}"`
 
   return (
-    <div>
+    <Layout>
+
+    <FlexWrapper>
       <h1>{tagHeader}</h1>
+      <TagsWrapper>
       <ul>
         {edges.map(({ node }) => {
           const { slug } = node
@@ -27,12 +35,15 @@ const Tags = ({ pageContext, data }) => {
           )
         })}
       </ul>
+      
       {/*
               This links to a page that does not yet exist.
               You'll come back to it!
             */}
-      <Link to="/tags">All tags</Link>
-    </div>
+      <Link className="all-tags" to="/tags">Click to see all tags</Link>
+      </TagsWrapper>
+    </FlexWrapper>
+    </Layout>
   )
 }
 

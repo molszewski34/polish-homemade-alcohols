@@ -7,6 +7,12 @@ import kebabCase from "lodash/kebabCase"
 // Components
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
+// import styled from "styled-components"
+import Layout from "../components/layout"
+import FlexWrapper from "../themes/FlexWrapper"
+import TagsWrapper from "../themes/TagsWrapper"
+
+
 
 const TagsPage = ({
   data: {
@@ -16,21 +22,23 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
+  <Layout>
+  <FlexWrapper>
     <Helmet title={title} />
-    <div>
+    <TagsWrapper>
       <h1>Tags</h1>
       <ul>
         {group.map(tag => (
           <li key={tag.fieldValue}>
             <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
+              #{tag.fieldValue} ({tag.totalCount})
             </Link>
           </li>
         ))}
       </ul>
-    </div>
-  </div>
+    </TagsWrapper>
+  </FlexWrapper>
+  </Layout>
 )
 
 TagsPage.propTypes = {

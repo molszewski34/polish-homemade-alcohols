@@ -11,15 +11,30 @@ const Heading = styled.h3`
   font-weight: 600;
   font-size: 1.4em;
   margin-left: 0.5em;
-  padding-left:0.3em;
+  padding-left: 0.3em;
   margin-top: 0.5em;
   border-left: 4px solid #047857;
+
+  @media(min-width: 640px){
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    border-left: none;
+    margin-bottom: 1,5em;
+    font-weight: 700;
+  }
 `
 const FlexCenter = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+ 
 `
 
 const Tags = styled.div`
@@ -37,19 +52,31 @@ const Tags = styled.div`
   }
 `
 
-const ReadMoreBtn = styled.button`
-margin-top: 1em;
-margin-bottom: 4em;
-padding: .5em;
-font-size: 1.5em;
-font-weight: 600;
-/* border: 2px solid rgba(251, 146, 60, 0.87); */
-border-radius: 5px;
-border: none;
-background-color: rgba(251, 146, 60);
-color: #fff;
-cursor: pointer;
+const Button= styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10em;
+  /* align-items: center; */
 `
+
+const ReadMoreBtn = styled.button`
+  margin-top: 1em;
+  /* margin-bottom: 4em; */
+  padding: 0.5em;
+  font-size: 1.5em;
+  font-weight: 600;
+  /* border: 2px solid rgba(251, 146, 60, 0.87); */
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(251, 146, 60);
+  color: #fff;
+  cursor: pointer;
+  place-self: center;
+`
+
+
 
 const IndexPage = ({
   data: {
@@ -70,29 +97,31 @@ const IndexPage = ({
               alt={`Thumbnail of ${page.node.title} article`}
             />
             <div className="tile__wrapper">
-            <span>{page.node.date}</span>
-            <Link to={page.node.slug}>
-              {" "}
-              <h3>{homePageBlogRoll.title}</h3>{" "}
-            </Link>
-            <p>{page.node.description}</p>
-            <Tags>
-              {page.node.tags.map(tag => {
-                return (
-                  <Link to={`/tags/${tag}`}>
-                    <button>{tag}</button>{" "}
-                  </Link>
-                )
-              })}
-            </Tags>
+              <span>{page.node.date}</span>
+              <Link to={page.node.slug}>
+              
+                <h3>{homePageBlogRoll.title}</h3>
+              </Link>
+              <p>{page.node.description}</p>
+              <Tags>
+                {page.node.tags.map(tag => {
+                  return (
+                    <Link to={`/tags/${tag}`}>
+                      <button>{tag}</button>
+                    </Link>
+                  )
+                })}
+              </Tags>
             </div>
           </Tile>
         )
       })}
+    </FlexCenter>
+    <Button >
       <Link to="/blog">
         <ReadMoreBtn>Read More</ReadMoreBtn>
       </Link>
-    </FlexCenter>
+    </Button>
   </Layout>
 )
 

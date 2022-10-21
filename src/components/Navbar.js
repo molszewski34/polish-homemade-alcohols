@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "gatsby"
+import { Logo } from "./Navbar/Logo"
 
 //Styled Components
 
@@ -8,6 +10,9 @@ const WrapperNav = styled.nav`
   justify-content: center;
   padding: 1em;
   background-color: #212121;
+  a{
+    text-decoration: none;
+  }
   @media (min-width: 640px){
     justify-content: left;
     padding-left: 2em;
@@ -15,28 +20,30 @@ const WrapperNav = styled.nav`
 
 `
 
-const Logo = styled.div`
-  font-size: 1.2em;
-  text-align: center;
-  color: #eeeeee;
-  font-family: "Edu VIC WA NT Beginner", cursive;
+// const Logo = styled.div`
+//   font-size: 1.3em;
+//   text-align: center;
+//   color: #eeeeee;
+
+//   font-family: 'Quicksand', sans-serif;
 
 
-  span {
-    color: red;
-  }
-`
-const AboutMe = styled.div``
+//   span {
+//     color: red;
+//   }
+// `
+// const AboutMe = styled.div``
 
 export const Navbar = () => {
   return (
     <WrapperNav>
-      <Logo>
-        Polo <span>Alkoholo</span>
-      </Logo>
-      {/* <AboutMe>
-About me
-        </AboutMe> */}
+      <Link to="/">
+      {/* <Logo>
+        Homemade <span>Polish</span> Wines
+      </Logo> */}
+      <Logo/>
+      </Link>
+ 
     </WrapperNav>
   )
 }
