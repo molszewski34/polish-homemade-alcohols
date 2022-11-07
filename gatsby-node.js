@@ -23,7 +23,10 @@ exports.createPages = ({ graphql, actions }) => {
               }
               lead
               content {
+                html
                 markdown
+                raw
+                text
               }
             }
           }
@@ -41,9 +44,9 @@ exports.createPages = ({ graphql, actions }) => {
     // Create blog posts pages.
     const posts = result.data.allGraphCmsArticle.edges
 
-    posts.forEach(post => {
-      // const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      // const next = index === 0 ? null : posts[index - 1].node
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
       const slug = post.node.slug
       console.log(slug)
 
@@ -52,9 +55,9 @@ exports.createPages = ({ graphql, actions }) => {
         component: blogPost,
         context: {
           data: post.node,
-          // slug: slug,
-          // previous,
-          // next,
+          slug: slug,
+          previous,
+          next,
         },
       })
     })
@@ -62,13 +65,6 @@ exports.createPages = ({ graphql, actions }) => {
     // tags
     const tagTemplate = path.resolve("src/templates/tags.js")
 
-    // Create post detail pages
-    // posts.forEach(({ node }) => {
-    //   createPage({
-    //     path: node.slug,
-    //     component: blogPost,
-    //   })
-    // })
     const tags = result.data.allGraphCmsArticle.group
 
     tags.forEach(tag => {
@@ -83,12 +79,12 @@ exports.createPages = ({ graphql, actions }) => {
 
     //Pagination
     // Create blog post list pages
-    const postsPerPage = 2
+    const postsPerPage = 4 
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/blog` : `/blog${i + 1}`,
+        path: i === 0 ? `/blog` : `/blog/${i + 1}`,
         component: path.resolve("./src/templates/blog-list-template.js"),
         context: {
           limit: postsPerPage,

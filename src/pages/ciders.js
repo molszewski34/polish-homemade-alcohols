@@ -3,11 +3,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
 import { Header } from "../components/Header"
-import Tile from "../themes/Tile"
-import { RichText } from "@graphcms/rich-text-react-renderer"
 // styled Components
+import Tile from "../themes/Tile"
 import Button from "../themes/Pages/Button"
 import FlexCenter from "../themes/Pages/FlexCenter"
 import Heading from "../themes/Pages/Heading"
@@ -19,21 +17,20 @@ import Tags from "../themes/Pages/Tags"
 
 
 
-const IndexPage = ({
+const Ciders = ({
   data: {
     allGraphCmsArticle: { edges },
   },
 }) => (
   <Layout>
     <Header />
-    <Heading id="news">News</Heading>
+    <Heading id="news">Ciders</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
         const homePageBlogRoll = page.node
         const image = getImage(page.node.thumbnail)
         return (
           <Tile index={index}>
-            
             <GatsbyImage
               image={image}
               alt={`Thumbnail of ${page.node.title} article`}
@@ -55,7 +52,6 @@ const IndexPage = ({
                   )
                 })}
               </Tags>
-
           </Tile>
         )
       })}
@@ -69,8 +65,8 @@ const IndexPage = ({
 )
 
 export const query = graphql`
-  query HomePageQuery {
-    allGraphCmsArticle {
+  query CidersPageQuery {
+    allGraphCmsArticle (filter: { tags: { eq: "cider" } }){
       edges {
         node {
           slug
@@ -94,4 +90,4 @@ export const query = graphql`
 
 export const Head = () => <Seo title="Home" />
 
-export default IndexPage
+export default Ciders

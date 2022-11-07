@@ -6,7 +6,7 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import { Header } from "../components/Header"
 import Tile from "../themes/Tile"
-import { RichText } from "@graphcms/rich-text-react-renderer"
+
 // styled Components
 import Button from "../themes/Pages/Button"
 import FlexCenter from "../themes/Pages/FlexCenter"
@@ -14,26 +14,20 @@ import Heading from "../themes/Pages/Heading"
 import ReadMoreBtn from "../themes/Pages/ReadMoreBtn"
 import Tags from "../themes/Pages/Tags"
 
-
-
-
-
-
-const IndexPage = ({
+const Tinctures = ({
   data: {
     allGraphCmsArticle: { edges },
   },
 }) => (
   <Layout>
     <Header />
-    <Heading id="news">News</Heading>
+    <Heading id="news">Tinctures</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
         const homePageBlogRoll = page.node
         const image = getImage(page.node.thumbnail)
         return (
           <Tile index={index}>
-            
             <GatsbyImage
               image={image}
               alt={`Thumbnail of ${page.node.title} article`}
@@ -44,8 +38,7 @@ const IndexPage = ({
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
               <p>{page.node.description}</p>
-   
-            </div>
+
               <Tags>
                 {page.node.tags.map(tag => {
                   return (
@@ -55,7 +48,7 @@ const IndexPage = ({
                   )
                 })}
               </Tags>
-
+            </div>
           </Tile>
         )
       })}
@@ -69,8 +62,8 @@ const IndexPage = ({
 )
 
 export const query = graphql`
-  query HomePageQuery {
-    allGraphCmsArticle {
+  query TincturesPageQuery {
+    allGraphCmsArticle(filter: { tags: { eq: "tincture" } }) {
       edges {
         node {
           slug
@@ -94,4 +87,4 @@ export const query = graphql`
 
 export const Head = () => <Seo title="Home" />
 
-export default IndexPage
+export default Tinctures

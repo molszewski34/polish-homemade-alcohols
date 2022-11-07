@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 }
 body{
   font-family: 'Raleway', sans-serif;
-  position: relative;
+  /* position: relative; */
 
 }
 

@@ -8,23 +8,18 @@ const FooterSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  /* position: sticky;
-  bottom: 0;
-  left: 0;
-  right: 0; */
-  /* margin-top: 5em; */
-  background-color: rgb(92, 34, 30);
+
+  background-color: #1e293b;
   font-weight: 500;
-  color: #9ca3af;
+  color: #e2e8f0;
   padding: 1em;
   gap: 0.5em;
-  /* margin-top: 3em; */
-  /* font-weight: 600; */
+  
   ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+   
     gap: 0.5em;
   }
 
@@ -42,14 +37,18 @@ const FooterSection = styled.section`
 const FooterWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: .5em;
-  align-items: center;
-  color: #926f6c;
-/* @media(min-width: 640px){
-  display: flex;
-  flex-direction: column;
-  gap: .5em;
-} */
+  align-items: left;
+  color: #cbd5e1;
+  font-weight: 700;
+  .logo{
+    margin-bottom: 3em;
+  }
+  a{
+    text-decoration: none;
+    color: #cbd5e1;
+  }
 
 `
 
@@ -58,13 +57,14 @@ export const Footer = () => {
   return (
     <FooterSection>
       <FooterWrapper>
-        <Link>Home</Link>
-        <Link>About me</Link>
+        <Logo className="logo"/>
+        <Link to="/">Home</Link>
+        <Link to="/wines">Wines</Link>
 
-        <Link>Winemaking tools</Link>
-        <Link>Usefull Links</Link>
+        <Link to="/ciders">Ciders</Link>
+        <Link to="/tinctures">Tinctures</Link>
       </FooterWrapper>
-      <Logo/>
+      
       <FooterWrapper>
       <Link className="contact">CONTACT</Link>
       <Link>email: mariuszolszewski21@gmail.com</Link>

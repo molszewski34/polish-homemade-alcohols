@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+
 import { Logo } from "./Navbar/Logo"
 
 //Styled Components
@@ -37,12 +37,11 @@ const WrapperNav = styled.nav`
 export const Navbar = () => {
   return (
     <WrapperNav>
-      <Link to="/">
       {/* <Logo>
         Homemade <span>Polish</span> Wines
       </Logo> */}
       <Logo/>
-      </Link>
+     
  
     </WrapperNav>
   )

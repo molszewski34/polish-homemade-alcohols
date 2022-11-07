@@ -1,18 +1,24 @@
 import styled from "styled-components"
 
 const Tile = styled.article`
-  max-width: 300px;
+  width: 300px;
   -webkit-box-shadow: 6px 5px 21px -7px rgba(66, 68, 90, 1);
   -moz-box-shadow: 6px 5px 21px -7px rgba(66, 68, 90, 1);
   box-shadow: 6px 5px 21px -7px rgba(66, 68, 90, 1);
   margin: 1em 1em 0 1em;
   display: flex;
   flex-direction: column;
-
+  /* display: grid; */
+ 
+  /* justify-content: space-around; */
+  padding: 1em;
   border-radius: 8px;
+  position: relative;
+  /* max-height: 700px; */
 
   img{
-    /* object-fit: cover; */
+    object-fit: cover;
+    height: auto;
   }
 
   .gatsby-image-wrapper img{
@@ -22,7 +28,7 @@ const Tile = styled.article`
     }
 
   span{
-    margin-top: 1em;
+    /* margin-top: 1em; */
     font-size: .9em;
     color: #4b5563;
     font-weight: 600;
@@ -40,7 +46,11 @@ const Tile = styled.article`
 
   p{
     color: #475569;
-    display:flex;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+
   }
 
   button{
@@ -48,11 +58,15 @@ const Tile = styled.article`
   }
 
   .tile__wrapper{
-    padding: 1em;
+    
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    /* justify-content: space-around; */
     /* width: 300px; */
+    gap: 0.5em;
+    /* margin-bottom: 1em; */
+    height: 100%;
   }
 
   @media(width: 640px){
