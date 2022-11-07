@@ -6,15 +6,13 @@ import { Link, graphql } from "gatsby"
 import { Header } from "../components/Header"
 // styled Components
 import Tile from "../themes/Tile"
-import Button from "../themes/Pages/Button"
-import FlexCenter from "../themes/Pages/FlexCenter"
-import Heading from "../themes/Pages/Heading"
-import ReadMoreBtn from "../themes/Pages/ReadMoreBtn"
-import Tags from "../themes/Pages/Tags"
-
-
-
-
+import {
+  FlexCenter,
+  Heading,
+  ReadMoreBtn,
+  Button,
+  Tags,
+} from "../themes/Pages/PageStyles"
 
 
 const Ciders = ({
@@ -37,21 +35,20 @@ const Ciders = ({
             />
             <div className="tile__wrapper">
               <span>{page.node.date}</span>
-              <Link to={page.node.slug}>
+              <Link to={`/${page.node.slug}`}>
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
               <p>{page.node.description}</p>
-   
             </div>
-              <Tags>
-                {page.node.tags.map(tag => {
-                  return (
-                    <Link to={`/tags/${tag}`}>
-                      <button>{tag}</button>
-                    </Link>
-                  )
-                })}
-              </Tags>
+            <Tags>
+              {page.node.tags.map(tag => {
+                return (
+                  <Link to={`/tags/${tag}`}>
+                    <button>{tag}</button>
+                  </Link>
+                )
+              })}
+            </Tags>
           </Tile>
         )
       })}
@@ -66,7 +63,7 @@ const Ciders = ({
 
 export const query = graphql`
   query CidersPageQuery {
-    allGraphCmsArticle (filter: { tags: { eq: "cider" } }){
+    allGraphCmsArticle(filter: { tags: { eq: "cider" } }) {
       edges {
         node {
           slug
@@ -88,6 +85,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Ciders" />
 
 export default Ciders

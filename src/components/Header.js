@@ -37,9 +37,9 @@ const HeaderImgWrapper = styled.div`
     margin-top: 2em;
     padding: 0.5em 2em;
     border-radius: 20px;
-    /* background-color: rgb(255, 255, 255, 0.2); */
+  
     background-color: #1e293b;
-    /* border: 1px solid #fff; */
+
     border: none;
     color: #fff;
     font-weight: 600;
@@ -49,9 +49,7 @@ const HeaderImgWrapper = styled.div`
       opacity: 0.9;
     }
     .background {
-      /* width: 100%; */
-      /* height: 100%; */
-      /* z-index:0; */
+
     }
     @media (min-width: 640px) {
       font-size: 1.3em;
@@ -121,27 +119,18 @@ const HeroImgTextWrapper = styled.div`
 const Category = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* display: grid; */
-  /* grid-template-columns: 1fr; */
+
   @media (min-width: 640px) {
-    /* grid-template-columns: repeat(3, 300px);
 
-    grid-column-gap: 0.5em;
-
-    justify-content: center; */
     flex-direction: row;
     margin-top: -2em;
   }
-  /* @media (max-width: 1024px) {
-    grid-template-columns: 300px 300px;
-    place-content: center;
-  } */
+
 `
 
 const CategoryTile = styled.div`
   position: relative;
-  /* max-width: 300px; */
+
 
   :hover {
   }
@@ -162,26 +151,23 @@ const CategoryTile = styled.div`
     border-color: #881337;
   }
   a {
-    /* background-color: black; */
+
   }
   img {
-    /* height: 150px; */
-    /* object-fit: cover; */
+
     display: flex;
     width: 100%;
     height: 100%;
   }
 
   @media (min-width: 640px) {
-    /* width: 20%; */
+ 
     max-width: 300px;
-    /* margin-top: -20px; */
-    /* border-radius: 10px; */
+
     img {
       border: 1px solid #ccc;
       box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
-      /* min-height: 30vh; */
-      /* object-fit: cover; */
+
       height: 300px;
       overflow: hidden;
       opacity: 0.3;
@@ -201,12 +187,12 @@ const CategoryTile = styled.div`
     transition: all 0.3s ease;
     z-index: 3;
     opacity: 0;
-    /* transform: scaleY(2); */
+ 
   }
 
   :hover:before,
   :hover:after {
-    /* transform: scale(1); */
+  
     opacity: 0.25;
   }
 `
@@ -218,8 +204,7 @@ export const Header = () => {
         <StaticImage
           src="../images/marco-bianchetti-9JSO1c5ryz0-unsplash.jpg"
           alt="Polish Homemade Wines Header"
-          // objectFit="cover"
-          // style={{ position: "absolute" }}
+         
         />
 
         <HeroImgTextWrapper>
@@ -236,7 +221,7 @@ export const Header = () => {
         </HeroImgTextWrapper>
       </HeaderImgWrapper>
       <Category>
-        {" "}
+
         <Link to="/ciders">
           <CategoryTile>
             <StaticImage

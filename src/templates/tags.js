@@ -2,7 +2,7 @@ import React from "react"
 
 // Components
 import { Link, graphql } from "gatsby"
-// import PropTypes from "prop-types"
+
 import Layout from "../components/layout"
 import FlexWrapper from "../themes/FlexWrapper"
 import TagsWrapper from "../themes/TagsWrapper"

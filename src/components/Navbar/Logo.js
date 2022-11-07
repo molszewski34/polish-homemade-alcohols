@@ -6,7 +6,7 @@ const LogoWrapper = styled.div`
   font-size: 1.3em;
   text-align: center;
   color: #eeeeee;
-  /* font-family: "Edu VIC WA NT Beginner", cursive; */
+
   font-family: "Quicksand", sans-serif;
 
   span {

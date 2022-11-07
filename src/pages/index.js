@@ -5,19 +5,16 @@ import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import { Header } from "../components/Header"
-import Tile from "../themes/Tile"
 import { RichText } from "@graphcms/rich-text-react-renderer"
 // styled Components
-import Button from "../themes/Pages/Button"
-import FlexCenter from "../themes/Pages/FlexCenter"
-import Heading from "../themes/Pages/Heading"
-import ReadMoreBtn from "../themes/Pages/ReadMoreBtn"
-import Tags from "../themes/Pages/Tags"
-
-
-
-
-
+import Tile from "../themes/Tile"
+import {
+  FlexCenter,
+  Heading,
+  ReadMoreBtn,
+  Button,
+  Tags,
+} from "../themes/Pages/PageStyles"
 
 const IndexPage = ({
   data: {
@@ -33,7 +30,6 @@ const IndexPage = ({
         const image = getImage(page.node.thumbnail)
         return (
           <Tile index={index}>
-            
             <GatsbyImage
               image={image}
               alt={`Thumbnail of ${page.node.title} article`}
@@ -44,18 +40,16 @@ const IndexPage = ({
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
               <p>{page.node.description}</p>
-   
             </div>
-              <Tags>
-                {page.node.tags.map(tag => {
-                  return (
-                    <Link to={`/tags/${tag}`}>
-                      <button>{tag}</button>
-                    </Link>
-                  )
-                })}
-              </Tags>
-
+            <Tags>
+              {page.node.tags.map(tag => {
+                return (
+                  <Link to={`/tags/${tag}`}>
+                    <button>{tag}</button>
+                  </Link>
+                )
+              })}
+            </Tags>
           </Tile>
         )
       })}
@@ -68,7 +62,7 @@ const IndexPage = ({
   </Layout>
 )
 
-export const query = graphql`
+export const pageQuery = graphql`
   query HomePageQuery {
     allGraphCmsArticle {
       edges {

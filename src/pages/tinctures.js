@@ -5,14 +5,17 @@ import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import { Header } from "../components/Header"
-import Tile from "../themes/Tile"
 
 // styled Components
-import Button from "../themes/Pages/Button"
-import FlexCenter from "../themes/Pages/FlexCenter"
-import Heading from "../themes/Pages/Heading"
-import ReadMoreBtn from "../themes/Pages/ReadMoreBtn"
-import Tags from "../themes/Pages/Tags"
+import Tile from "../themes/Tile"
+import {
+  FlexCenter,
+  Heading,
+  ReadMoreBtn,
+  Button,
+  Tags,
+} from "../themes/Pages/PageStyles"
+
 
 const Tinctures = ({
   data: {
@@ -34,7 +37,7 @@ const Tinctures = ({
             />
             <div className="tile__wrapper">
               <span>{page.node.date}</span>
-              <Link to={page.node.slug}>
+              <Link to={`/${page.node.slug}`}>
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
               <p>{page.node.description}</p>
@@ -85,6 +88,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Tinctures" />
 
 export default Tinctures

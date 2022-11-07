@@ -3,36 +3,9 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Tile from "../themes/Tile"
-import Tags from "../themes/Pages/Tags"
-import FlexCenter from "../themes/Pages/FlexCenter"
+import { Tags, FlexCenter } from "../themes/Pages/PageStyles"
 import styled from "styled-components"
 
-
-// const FlexCenter = styled.section`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-
-//   @media (min-width: 640px) {
-//     flex-direction: row;
-//     align-items: stretch;
-//   }
-// `
-// const Tags = styled.div`
-//   margin-top: 0.5em;
-//   display: flex;
-//   gap: 0.5em;
-//   button {
-//     padding: 0.4em 0.5em;
-//     font-weight: 600;
-//     border: none;
-//     border-radius: 5px;
-//     background-color: #fecaca;
-//     color: #a21caf;
-//     cursor: pointer;
-//   }
-// `
 const Blog = styled.main`
   display: flex;
   flex-direction: column;
@@ -45,14 +18,13 @@ const PageList = styled.ul`
   justify-content: center;
   align-items: center;
   gap: 1em;
-  a{
+  a {
     text-decoration: none;
     color: #000;
     font-size: 1.5em;
-
   }
 
-  li{
+  li {
     list-style: none;
   }
 `
@@ -85,46 +57,31 @@ export default class BlogList extends React.Component {
                     </Link>
                     <p>{node.description}</p>
                   </div>
-                    <Tags >
-                      {node.tags.map(tag => {
-                        return (
-                          <Link to={`/tags/${tag}`}>
-                            <button>{tag}</button>
-                          </Link>
-                        )
-                      })}
-                    </Tags>
+                  <Tags>
+                    {node.tags.map(tag => {
+                      return (
+                        <Link to={`/tags/${tag}`}>
+                          <button>{tag}</button>
+                        </Link>
+                      )
+                    })}
+                  </Tags>
                 </Tile>
               )
             })}
           </FlexCenter>
 
-          <PageList
-          // style={{
-          //   display: 'flex',
-          //   flexWrap: 'wrap',
-          //   justifyContent: 'space-between',
-          //   alignItems: 'center',
-          //   listStyle: 'none',
-          //   padding: 0,
-          // }}
-          >
+          <PageList>
             {!isFirst && (
               <Link to={prevPage} rel="prev">
                 ← Previous Page
               </Link>
             )}
             {Array.from({ length: numPages }, (_, i) => (
-              <li
-                key={`pagination-number${i + 1}`}
-                // style={{
-                //   margin: 0,
-                // }}
-              >
+              <li key={`pagination-number${i + 1}`}>
                 <Link
                   to={`/${i === 0 ? "" : i + 1}`}
                   style={{
-                   
                     color: i + 1 === currentPage ? "#ffffff" : "",
                     background: i + 1 === currentPage ? "#6b7280" : "",
                     padding: i + 1 === currentPage ? " 2px 7px" : "",

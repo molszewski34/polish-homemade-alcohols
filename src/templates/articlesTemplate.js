@@ -2,11 +2,11 @@ import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import reactMarkdown from "react-markdown"
+
 import Markdown from "../themes/Markdown-styles"
 import { Link } from "gatsby"
-import Tags from "../themes/Pages/Tags"
-import { RichText } from "@graphcms/rich-text-react-renderer"
+
+
 
 const articlesTemplate = ({ pageContext: { data } }) => {
   // const { previous, next } = pageContext
