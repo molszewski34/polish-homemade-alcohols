@@ -3,6 +3,7 @@ require("dotenv").config({
 })
 
 module.exports = {
+  pathPrefix: "/polish-homemade-alcohols",
   siteMetadata: {
     title: `Homemade Polish Alcohols`,
     description: `Polish Homemade Alcohols is a blog about making delicious and not common alcohols`,
