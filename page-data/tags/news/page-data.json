@@ -1,0 +1,1 @@
+{"componentChunkName":"component---src-templates-tags-js","path":"/tags/news/","result":{"data":{"allGraphCmsArticle":{"totalCount":1,"edges":[{"node":{"slug":"first-post","title":"First post and why i made this blog"}}]}},"pageContext":{"tag":"news"}},"staticQueryHashes":[]}
