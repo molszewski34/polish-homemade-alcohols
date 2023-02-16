@@ -7,7 +7,7 @@ display: flex;
 flex-direction: column;
 align-items: center;
 gap: .5em;
-margin-top: 2em;
+margin: 2em 0;
 li{
   list-style: none;
 
@@ -22,6 +22,7 @@ ul{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: .5em;
 }
 
 .all-tags{

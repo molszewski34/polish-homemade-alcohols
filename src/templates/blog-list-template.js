@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Tile from "../themes/Tile"
-import { Tags, FlexCenter } from "../themes/Pages/PageStyles"
+import { Tags, FlexCenter, Heading } from "../themes/Pages/PageStyles"
 import styled from "styled-components"
 
 const Blog = styled.main`
@@ -35,28 +35,40 @@ export default class BlogList extends React.Component {
     const { currentPage, numPages } = this.props.pageContext
     const isFirst = currentPage === 1
     const isLast = currentPage === numPages
-    const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString()
-    const nextPage = (currentPage + 1).toString()
+    const prevPage = currentPage - 1 === 1 ? "/" : `/blog/${(currentPage - 1).toString()}`
+    const nextPage = `/blog/${(currentPage + 1).toString()}`
+    console.log(currentPage)
     return (
       <Layout>
+     
+  
+    
+
         <Blog>
+        <Heading id="news">Articles</Heading>
+
           <FlexCenter>
             {posts.map(({ node }) => {
               const title = node.title || node.slug
               const image = getImage(node.thumbnail)
               return (
                 <Tile>
+                  <title>{node.title}</title>
+                  <meta name="description" content={node.description} />
                   <GatsbyImage
+                    placeholder="none"
                     image={image}
                     alt={`Thumbnail of ${node.title} article`}
                   />
-                  <div className="tile__wrapper">
-                    <span>{node.date}</span>
-                    <Link to={`/${node.slug}`}>
-                      <h3>{title}</h3>{" "}
+                  <div className="tile_wrapper">
+                  <div className="meta-info">
+                      <Link to={`/${node.slug}`}>
+                      <h3>{title}</h3>
                     </Link>
+                    <span>{node.date}</span>
                     <p>{node.description}</p>
                   </div>
+                    </div>
                   <Tags>
                     {node.tags.map(tag => {
                       return (
@@ -66,6 +78,7 @@ export default class BlogList extends React.Component {
                       )
                     })}
                   </Tags>
+                
                 </Tile>
               )
             })}
@@ -78,9 +91,11 @@ export default class BlogList extends React.Component {
               </Link>
             )}
             {Array.from({ length: numPages }, (_, i) => (
+                  // const nextPage = `/blog/${(currentPage + 1).toString()}`
               <li key={`pagination-number${i + 1}`}>
                 <Link
-                  to={`/${i === 0 ? "" : i + 1}`}
+                  to={`/blog/${i === 0 ? "" :  (i + 1)}`}
+                  // to={`${/blog/+ 4}`}
                   style={{
                     color: i + 1 === currentPage ? "#ffffff" : "",
                     background: i + 1 === currentPage ? "#6b7280" : "",

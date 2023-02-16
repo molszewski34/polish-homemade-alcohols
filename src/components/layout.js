@@ -3,6 +3,8 @@ import  {Navbar}  from "./Navbar"
 import { createGlobalStyle} from "styled-components"
 // import styled from "styled-components"
 import {Footer} from "./Footer"
+import Header from "./Header"
+import HeaderMobile from "./HeaderMobile"
 const GlobalStyle = createGlobalStyle`
 *, ::after, ::before {
     box-sizing: border-box;
@@ -11,8 +13,7 @@ const GlobalStyle = createGlobalStyle`
 }
 body{
   font-family: 'Raleway', sans-serif;
-  /* position: relative; */
-
+  background-color: #ffedd5;
 }
 
 .height{
@@ -32,6 +33,8 @@ const Layout = ({ children }) => {
     <div className="height">
       <GlobalStyle/>
       <Navbar />
+      <Header/>
+      <HeaderMobile/>
       <main>
 
       {children}

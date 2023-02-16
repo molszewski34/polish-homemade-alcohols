@@ -6,9 +6,7 @@ const LogoWrapper = styled.div`
   font-size: 1.3em;
   text-align: center;
   color: #eeeeee;
-
-  font-family: "Quicksand", sans-serif;
-
+  font-family: 'Righteous', cursive;
   span {
     color: red;
   }
@@ -21,8 +19,7 @@ const LogoWrapper = styled.div`
 export const Logo = () => {
   return (
     <LogoWrapper>
-      <Link to="/">
-     
+      <Link to="/">   
         Homemade <span>Polish</span> Alcohols
       </Link>
     </LogoWrapper>

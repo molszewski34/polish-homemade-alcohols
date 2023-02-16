@@ -3,8 +3,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
-import { Header } from "../components/Header"
 
 // styled Components
 import Tile from "../themes/Tile"
@@ -23,7 +21,7 @@ const Tinctures = ({
   },
 }) => (
   <Layout>
-    <Header />
+
     <Heading id="news">Tinctures</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
@@ -31,28 +29,30 @@ const Tinctures = ({
         const image = getImage(page.node.thumbnail)
         return (
           <Tile index={index}>
-            <GatsbyImage
-              image={image}
-              alt={`Thumbnail of ${page.node.title} article`}
-            />
-            <div className="tile__wrapper">
-              <span>{page.node.date}</span>
-              <Link to={`/${page.node.slug}`}>
+          <GatsbyImage
+            placeholder="none"
+            image={image}
+            alt={`Thumbnail of ${page.node.title} article`}
+          />
+          <div className="tile_wrapper">
+            <div className="meta-info">
+              <Link to={page.node.slug}>
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
+              <span>{page.node.date}</span>
               <p>{page.node.description}</p>
-
-              <Tags>
-                {page.node.tags.map(tag => {
-                  return (
-                    <Link to={`/tags/${tag}`}>
-                      <button>{tag}</button>
-                    </Link>
-                  )
-                })}
-              </Tags>
             </div>
-          </Tile>
+          </div>
+          <Tags>
+            {page.node.tags.map(tag => {
+              return (
+                <Link to={`/tags/${tag}`}>
+                  <button>{tag}</button>
+                </Link>
+              )
+            })}
+          </Tags>
+        </Tile>
         )
       })}
     </FlexCenter>

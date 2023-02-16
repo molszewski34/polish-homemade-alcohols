@@ -1,11 +1,9 @@
-import * as React from "react"
+import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
-import { Header } from "../components/Header"
-import { RichText } from "@graphcms/rich-text-react-renderer"
+
 // styled Components
 import Tile from "../themes/Tile"
 import {
@@ -22,8 +20,11 @@ const IndexPage = ({
   },
 }) => (
   <Layout>
-    <Header />
-    <Heading id="news">News</Heading>
+    <>
+      <title>Polish Homemade Alcohols</title>
+      <meta name="" content="" />
+    </>
+    <Heading id="news">New Posts</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
         const homePageBlogRoll = page.node
@@ -31,15 +32,18 @@ const IndexPage = ({
         return (
           <Tile index={index}>
             <GatsbyImage
+              placeholder="none"
               image={image}
               alt={`Thumbnail of ${page.node.title} article`}
             />
-            <div className="tile__wrapper">
-              <span>{page.node.date}</span>
-              <Link to={page.node.slug}>
-                <h3>{homePageBlogRoll.title}</h3>
-              </Link>
-              <p>{page.node.description}</p>
+            <div className="tile_wrapper">
+              <div className="meta-info">
+                <Link to={page.node.slug}>
+                  <h3>{homePageBlogRoll.title}</h3>
+                </Link>
+                <span>{page.node.date}</span>
+                <p>{page.node.description}</p>
+              </div>
             </div>
             <Tags>
               {page.node.tags.map(tag => {
@@ -64,7 +68,7 @@ const IndexPage = ({
 
 export const pageQuery = graphql`
   query HomePageQuery {
-    allGraphCmsArticle {
+    allGraphCmsArticle(sort: { fields: date, order: DESC }) {
       edges {
         node {
           slug

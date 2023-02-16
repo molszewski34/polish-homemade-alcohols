@@ -32,6 +32,18 @@ module.exports = {
             name: `Edu VIC WA NT Beginner`,
             file: "https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Quicksand:wght@700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto&display=swap",
           },
+          {
+            name: "Noto Sans",
+            file: "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap",
+          },
+          // {
+          //   name: 'Lobster',
+          //   file: 'https://fonts.googleapis.com/css2?family=Lobster&display=swap'
+          // },
+          {
+            name: "Righteous",
+            file: "https://fonts.googleapis.com/css2?family=Righteous&display=swap",
+          },
         ],
       },
     },
@@ -63,7 +75,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
       },
     },
   ],

@@ -3,7 +3,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
-import { Header } from "../components/Header"
+
 // styled Components
 import Tile from "../themes/Tile"
 import {
@@ -14,14 +14,12 @@ import {
   Tags,
 } from "../themes/Pages/PageStyles"
 
-
 const Ciders = ({
   data: {
     allGraphCmsArticle: { edges },
   },
 }) => (
   <Layout>
-    <Header />
     <Heading id="news">Ciders</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
@@ -34,10 +32,11 @@ const Ciders = ({
               alt={`Thumbnail of ${page.node.title} article`}
             />
             <div className="tile__wrapper">
-              <span>{page.node.date}</span>
+            
               <Link to={`/${page.node.slug}`}>
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
+              <span>{page.node.date}</span>
               <p>{page.node.description}</p>
             </div>
             <Tags>
@@ -63,7 +62,10 @@ const Ciders = ({
 
 export const query = graphql`
   query CidersPageQuery {
-    allGraphCmsArticle(filter: { tags: { eq: "cider" } }) {
+    allGraphCmsArticle(
+      filter: { tags: { eq: "cider" } }
+      sort: { fields: date, order: DESC }
+    ) {
       edges {
         node {
           slug

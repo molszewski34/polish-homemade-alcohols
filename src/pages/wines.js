@@ -3,8 +3,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
-import styled from "styled-components"
-import { Header } from "../components/Header"
+
+
 
 // styled Components
 import Tile from "../themes/Tile"
@@ -23,7 +23,7 @@ const Wines = ({
   },
 }) => (
   <Layout>
-    <Header />
+
     <Heading id="news">Wines</Heading>
     <FlexCenter>
       {edges.map((page, index) => {
@@ -36,10 +36,11 @@ const Wines = ({
               alt={`Thumbnail of ${page.node.title} article`}
             />
             <div className="tile__wrapper">
-              <span>{page.node.date}</span>
+      
               <Link to={`/${page.node.slug}`}>
                 <h3>{homePageBlogRoll.title}</h3>
               </Link>
+              <span>{page.node.date}</span>
               <p>{page.node.description}</p>
             </div>
             <Tags>

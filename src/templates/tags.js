@@ -8,7 +8,6 @@ import FlexWrapper from "../themes/FlexWrapper"
 import TagsWrapper from "../themes/TagsWrapper"
 //themes
 
-
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   // const { edges } = data.allGraphCmsArticle.edges
@@ -20,16 +19,17 @@ const Tags = ({ pageContext, data }) => {
   return (
     <Layout>
 
-    <FlexWrapper>
+    <FlexWrapper
+    style={{backgroundColor:'#fff'}}
+    >
       <h1>{tagHeader}</h1>
       <TagsWrapper>
       <ul>
         {edges.map(({ node }) => {
           const { slug } = node
           const { title } = node
-        {  console.log({slug})}
           return (
-            <li key={`slug`}>
+            <li>
               <Link to={`/${slug}`}>{title}</Link>
             </li>
           )
@@ -66,42 +66,3 @@ query ($tag: String) {
   }
 }
 `
-// Tags.propTypes = {
-//   pageContext: PropTypes.shape({
-//     tag: PropTypes.string.isRequired,
-//   }),
-//   data: PropTypes.shape({
-//     allGraphCmsArticle: PropTypes.shape({
-//       totalCount: PropTypes.number.isRequired,
-//       edges: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           node: PropTypes.shape({
-//             title: PropTypes.string.isRequired,
-//             slug: PropTypes.string.isRequired,
-//           }),
-//         }).isRequired
-//       ),
-//     }),
-//   }),
-// }
-// export const pageQuery = graphql`
-//   query($tag: String) {
-//     allMarkdownRemark(
-//       limit: 2000
-//       sort: { fields: [frontmatter___date], order: DESC }
-//       filter: { frontmatter: { tags: { in: [$tag] } } }
-//     ) {
-//       totalCount
-//       edges {
-//         node {
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             title
-//           }
-//         }
-//       }
-//     }
-//   }
-// `

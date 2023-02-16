@@ -6,7 +6,6 @@ export const Button = styled.div`
   align-items: center;
   margin-bottom: 10em;
 `
-
 export const FlexCenter = styled.section`
   display: grid;
   grid-template-columns: 1fr;
@@ -24,12 +23,11 @@ export const FlexCenter = styled.section`
   }
 `
 export const Heading = styled.h3`
-  font-weight: 600;
-  font-size: 1.4em;
-  margin-left: 0.5em;
-  padding-left: 0.3em;
+  font-weight: 700;
+  font-size: 3em;
+  text-align: center;
   margin-top: 0.5em;
-  border-left: 4px solid #047857;
+  width: 100%;
 
   @media (min-width: 640px) {
     display: flex;
@@ -40,17 +38,13 @@ export const Heading = styled.h3`
     font-weight: 700;
   }
 `
-
 export const ReadMoreBtn = styled.button`
   margin-top: 1em;
-
   padding: 0.5em;
   font-size: 1.5em;
   font-weight: 600;
-
   border-radius: 5px;
   border: 2px solid #6b7280;
-
   background-color: #fff;
   color: #6b7280;
   cursor: pointer;
@@ -59,19 +53,18 @@ export const ReadMoreBtn = styled.button`
     opacity: 0.7;
   }
 `
-
 export const Tags = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5em;
-
+  margin-top: 1em;
   bottom: 1em;
   button {
     padding: 0.4em 0.5em;
     font-weight: 600;
-    border: 1px solid #6b7280;
+    border: 2px solid #6b7280;
     border-radius: 5px;
     background-color: #fff;
-
     color: #64748b;
     cursor: pointer;
     :hover {
@@ -79,4 +72,3 @@ export const Tags = styled.div`
     }
   }
 `
-

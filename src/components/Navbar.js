@@ -37,9 +37,6 @@ const WrapperNav = styled.nav`
 export const Navbar = () => {
   return (
     <WrapperNav>
-      {/* <Logo>
-        Homemade <span>Polish</span> Wines
-      </Logo> */}
       <Logo/>
      
  

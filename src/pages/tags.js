@@ -12,8 +12,6 @@ import Layout from "../components/layout"
 import FlexWrapper from "../themes/FlexWrapper"
 import TagsWrapper from "../themes/TagsWrapper"
 
-
-
 const TagsPage = ({
   data: {
     allGraphCmsArticle: { group },
@@ -23,21 +21,24 @@ const TagsPage = ({
   },
 }) => (
   <Layout>
-  <FlexWrapper>
-    <Helmet title={title} />
-    <TagsWrapper>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              #{tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </TagsWrapper>
-  </FlexWrapper>
+    <FlexWrapper style={{ backgroundColor: "#fff" }}>
+      <Helmet title={title} />
+      <TagsWrapper>
+        <h1>Tags</h1>
+        <ul>
+          {group.map(tag => (
+            <li key={tag.fieldValue}>
+              <Link
+                style={({ color: "#0f172a" }, { fontWeight: "600" })}
+                to={`/tags/${kebabCase(tag.fieldValue)}/`}
+              >
+                #{tag.fieldValue} ({tag.totalCount})
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </TagsWrapper>
+    </FlexWrapper>
   </Layout>
 )
 
