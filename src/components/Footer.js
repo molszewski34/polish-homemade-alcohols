@@ -8,7 +8,7 @@ import {
   FooterWrapper,
   FooterLinks,
   FooterContact,
-} from "../themes/Footer-styles"
+} from "../themes/Components/Footer-styles"
 
 export const Footer = () => {
   const today = new Date()
@@ -41,10 +41,8 @@ export const Footer = () => {
         </FooterLinks>
 
         <FooterContact>
-          <Link className="contact">CONTACT</Link>
-          <Link style={{ fontSize: "1em" }}>
-            Email: mariuszolszewski21@gmail.com
-          </Link>
+          <p className="contact">CONTACT</p>
+          <p>Email: mariuszolszewski21@gmail.com</p>
         </FooterContact>
       </FooterWrapper>
       <p style={{ fontSize: ".8em" }}>

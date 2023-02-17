@@ -5,7 +5,7 @@ import Seo from "../components/seo"
 import { Link, graphql } from "gatsby"
 
 // styled Components
-import Tile from "../themes/Tile"
+import Tile from "../themes/Components/Tile"
 import {
   FlexCenter,
   Heading,
@@ -59,9 +59,9 @@ const IndexPage = ({
       })}
     </FlexCenter>
     <Button>
-      <Link to="/blog">
-        <ReadMoreBtn>Read More</ReadMoreBtn>
-      </Link>
+      <ReadMoreBtn href="/blog">
+        Read More
+      </ReadMoreBtn>
     </Button>
   </Layout>
 )

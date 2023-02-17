@@ -20,19 +20,7 @@ const WrapperNav = styled.nav`
 
 `
 
-// const Logo = styled.div`
-//   font-size: 1.3em;
-//   text-align: center;
-//   color: #eeeeee;
 
-//   font-family: 'Quicksand', sans-serif;
-
-
-//   span {
-//     color: red;
-//   }
-// `
-// const AboutMe = styled.div``
 
 export const Navbar = () => {
   return (

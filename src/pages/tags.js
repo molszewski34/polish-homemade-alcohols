@@ -9,8 +9,8 @@ import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 // import styled from "styled-components"
 import Layout from "../components/layout"
-import FlexWrapper from "../themes/FlexWrapper"
-import TagsWrapper from "../themes/TagsWrapper"
+import FlexWrapper from "../themes/Components/FlexWrapper"
+import TagsWrapper from "../themes/Components/TagsWrapper"
 
 const TagsPage = ({
   data: {

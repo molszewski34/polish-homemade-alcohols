@@ -38,16 +38,17 @@ export const Heading = styled.h3`
     font-weight: 700;
   }
 `
-export const ReadMoreBtn = styled.button`
+export const ReadMoreBtn = styled.a`
   margin-top: 1em;
   padding: 0.5em;
   font-size: 1.5em;
-  font-weight: 600;
+  font-weight: 800;
   border-radius: 5px;
   border: 2px solid #6b7280;
   background-color: #fff;
   color: #6b7280;
   cursor: pointer;
+  text-decoration: none;
   place-self: center;
   :hover {
     opacity: 0.7;

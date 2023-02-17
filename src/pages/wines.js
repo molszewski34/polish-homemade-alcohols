@@ -7,7 +7,7 @@ import { Link, graphql } from "gatsby"
 
 
 // styled Components
-import Tile from "../themes/Tile"
+import Tile from "../themes/Components/Tile"
 import {
   FlexCenter,
   Heading,

@@ -31,11 +31,14 @@ export const FooterSection = styled.section`
 `
 export const FooterWrapper = styled.div`
 display: flex;
+flex-direction: column;
 justify-content: center;
 align-items: center;
 width: 100%;
+gap: 1em;
 @media (min-width: 640px) {
     justify-content: space-around;
+    flex-direction: row;
   }
 `
 

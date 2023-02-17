@@ -7,7 +7,7 @@ import {
   HeroImgText,
   Category,
   CategoryTile,
-} from "../themes/Header-styles"
+} from "../themes/Components/Header-styles"
 
 export const Header = () => {
   return (

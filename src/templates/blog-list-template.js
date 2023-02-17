@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Tile from "../themes/Tile"
+import Tile from "../themes/Components/Tile"
 import { Tags, FlexCenter, Heading } from "../themes/Pages/PageStyles"
 import styled from "styled-components"
 
